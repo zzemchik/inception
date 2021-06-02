@@ -1,0 +1,39 @@
+version: '3.8'
+services:
+    nginx_2:
+        depends_on: 
+            - wordpress_2
+        build: ./nginx
+        container_name: nginx_23
+        ports:
+            - 443:443
+        networks: 
+            - app 
+    wordpress_2:
+        depends_on: 
+            - db
+        build: ./Wordpress+php
+        container_name: WS
+        tty: true
+        volumes: 
+            - wp:/var/www/html
+        networks: 
+            - app
+    db:
+        build: ./mariadb
+        restart: always
+        container_name: mariadb
+        environment:
+            MYSQL_ROOT_PASSWORD: example
+        volumes: 
+            - db1:/var/lib/mysql
+        tty: true
+        networks: 
+            - app
+volumes:
+    db1:
+    wp:
+networks: 
+    app:
+        driver: bridge
+    
