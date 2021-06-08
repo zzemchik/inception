@@ -13,12 +13,12 @@ rsa:2048 -keyout /etc/nginx/ssl/rnancee.key \
 -out /etc/nginx/ssl/rnancee.crt \
 -subj '/C=RU/ST=Kazan/L=Kazan/O=Ecole42/OU=School21/CN=rnancee'
 
-RUN chmod -R 755 /etc/nginx/ssl/rnancee*
+RUN chmod -R 777 /etc/nginx/ssl/rnancee*
 #ngingx
 RUN rm -Rf /etc/nginx/sites-enabled/default
 RUN rm -Rf /etc/nginx/sites-available/default
 RUN mv nginx.conf /etc/nginx/sites-available/nginx.conf
 RUN ln -s /etc/nginx/sites-available/nginx.conf /etc/nginx/sites-enabled/nginx.conf
-EXPOSE 80 443
+EXPOSE 443
 
 CMD ["nginx", "-g", "daemon off;"]

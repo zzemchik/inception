@@ -1,2 +1,5 @@
-chmod -R 755 var/www/html/phpmyadmin/config.inc.php
-bash
+#!/usr/bin/env bash 
+# cd /etc/php/7.3/fpm/pool.d
+
+# cd ~
+exec "$@"

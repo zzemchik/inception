@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.3'
 services:
     nginx_2:
         depends_on: 
@@ -21,7 +21,6 @@ services:
             - app
     db:
         build: ./mariadb
-        restart: always
         container_name: mariadb
         environment:
             MYSQL_ROOT_PASSWORD: example
