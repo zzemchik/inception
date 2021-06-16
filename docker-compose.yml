@@ -8,7 +8,9 @@ services:
         ports:
             - 443:443
         networks: 
-            - app 
+            - app
+        volumes:
+            - wp:/var/www/html
     wordpress_2:
         depends_on: 
             - db
@@ -22,15 +24,15 @@ services:
     db:
         build: ./mariadb
         container_name: mariadb
-        environment:
-            MYSQL_ROOT_PASSWORD: example
         volumes: 
-            - db1:/var/lib/mysql
+            - db2:/var/lib/mysql
+        environment: 
+            PASSWORD_MYSQL: qwer1234
         tty: true
         networks: 
             - app
 volumes:
-    db1:
+    db2:
     wp:
 networks: 
     app:

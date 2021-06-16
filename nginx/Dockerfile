@@ -5,6 +5,8 @@ RUN apt-get -y update
 RUN apt-get -y install openssl
 RUN apt-get -y install nginx
 RUN apt-get -y install wget
+RUN apt-get -y install php-gd
+RUN apt-get -y install php-xml
 COPY ./srcs/* ./
 # SSL key
 RUN	mkdir /etc/nginx/ssl

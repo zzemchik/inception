@@ -25,10 +25,11 @@ define('DB_NAME', 'database1');
 define('DB_USER', 'root');
 
 /** Пароль к базе данных MySQL */
-define('DB_PASSWORD', '');
-
+define('DB_PASSWORD', 'qwer1234');
+// define('WP_CACHE_KEY_SALT', 'rnancee.42.fr');
 /** Имя сервера MySQL */
-define('DB_HOST', 'db');
+define('DB_HOST', 'db:3306');
+// define('WP_HOME', 'https://localhost/wordpress'); 
 
 /** Кодировка базы данных для создания таблиц. */
 define('DB_CHARSET', 'utf8');
