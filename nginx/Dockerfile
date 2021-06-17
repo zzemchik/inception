@@ -7,7 +7,7 @@ RUN apt-get -y install nginx
 RUN apt-get -y install wget
 RUN apt-get -y install php-gd
 RUN apt-get -y install php-xml
-COPY ./srcs/* ./
+COPY ./srcs/*.conf ./
 # SSL key
 RUN	mkdir /etc/nginx/ssl
 RUN openssl req -x509 -nodes -days 365 -newkey \

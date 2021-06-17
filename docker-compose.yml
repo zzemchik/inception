@@ -25,14 +25,16 @@ services:
         build: ./mariadb
         container_name: mariadb
         volumes: 
-            - db2:/var/lib/mysql
-        environment: 
+            - db3:/var/lib/mysql
+        environment:
             PASSWORD_MYSQL: qwer1234
+            DATABASE: wp
+            USER_NAME: root
         tty: true
         networks: 
             - app
 volumes:
-    db2:
+    db3:
     wp:
 networks: 
     app:

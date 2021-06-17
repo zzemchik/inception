@@ -1,10 +1,9 @@
 #!/usr/bin/env bash 
 service mysql start
 
-echo "CREATE DATABASE IF NOT EXISTS database1;"| mysql -u root --skip-password
-# echo "USE database1;" | mysql -u root --skip-password
-echo "CREATE USER IF NOT EXISTS 'root'@'%' IDENTIFIED BY '$PASSWORD_MYSQL' ;"| mysql -u root --skip-password
-echo "GRANT ALL PRIVILEGES ON database1.* TO 'root'@'%';"| mysql -u root --skip-password
-echo "FLUSH PRIVILEGES;"| mysql -u root --skip-password
+echo "CREATE DATABASE IF NOT EXISTS $DATABASE;"| mysql -u root 
+echo "CREATE USER IF NOT EXISTS '$USER_NAME'@'%' IDENTIFIED BY '$PASSWORD_MYSQL';"| mysql -u root 
+echo "GRANT ALL PRIVILEGES ON  $DATABASE.* TO '$USER_NAME'@'%';"| mysql -u root 
+echo "FLUSH PRIVILEGES;"| mysql -u root 
 echo "qwer1234" | mysqladmin -u root password
 exec "$@"
