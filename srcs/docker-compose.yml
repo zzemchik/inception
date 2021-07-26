@@ -1,0 +1,43 @@
+version: '3.3'
+services:
+    nginx_2:
+        depends_on: 
+            - wordpress_2
+        build: ./nginx
+        container_name: nginx_23
+        ports:
+            - 443:443
+        networks: 
+            - app
+        volumes:
+            - wp-data:/var/www/html
+    wordpress_2:
+        depends_on: 
+            - db
+        build: ./Wordpress+php
+        container_name: WS
+        tty: true
+        volumes:
+            - wp-data:/var/www/html
+        networks: 
+            - app
+    db:
+        ports:
+            - 3306:3306
+        build: ./mariadb
+        container_name: mariadb
+        volumes:
+            - db-data:/var/lib/mysql
+        environment:
+            PASSWORD_MYSQL: qwer1234
+            DATABASE: wp
+            USER_NAME: root
+        tty: true
+        networks: 
+            - app
+volumes:
+    db-data:
+    wp-data:
+networks:
+    app:
+        driver: bridge
